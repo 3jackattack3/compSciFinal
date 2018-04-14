@@ -9,29 +9,31 @@ import java.util.Random;
 
 public class main {
     public static void main(String args[]) {
-//        double[][] training_set_inputs = {{0,0,1}, {1,1,1}, {1,0,1}, {0,1,1}};
-//        double[][] training_set_outputs = {{0},{1},{1},{0}};
+        double[][] training_set_inputs = {{0,0,1}, {1,1,1}, {1,0,1}, {0,1,1}};
+        double[][] training_set_outputs = {{0},{1},{1},{0}};
         Random rand = new Random(1);
-        double[][] synaptic_weights ={{(2* rand.nextInt(2)), (2* rand.nextInt(2)), (2* rand.nextInt(2))}, {0}};
-//        double output = 0;
-//        for(int i = 0; i<10000; i++){
-//            output = 1/(1+Math.exp(-1*(dot(training_set_inputs, synaptic_weights))));
-//            synaptic_weights = add(synaptic_weights,dot(transpose(training_set_inputs), multiply(multiply(subtract(training_set_outputs,output), output), (1-output))));
-//        }
-//        double[][] temp = {{1},{0},{0}};
-//        System.out.print(1/(1+(1/Math.exp(dot(temp, synaptic_weights)))));
-
-        for(double[] items : synaptic_weights) {
-            for (double item : items) {
-                System.out.println(item);
-            }
+        double[][] synaptic_weights = {{(2* rand.nextInt(2))}, {(2* rand.nextInt(2))}, {(2* rand.nextInt(2))}, {(2* rand.nextInt(2))}}; //{{1}, {1}, {1}, {1}};
+        double output = 0;
+        for(int i = 0; i<10000; i++){
+            output = 1/(1+Math.exp(-1*(dot(training_set_inputs, synaptic_weights))));
+            synaptic_weights = add(synaptic_weights,dot(transpose(training_set_inputs), multiply(multiply(subtract(training_set_outputs,output), output), (1-output))));
         }
+        double[][] temp = {{1},{0},{0}};
+        System.out.print(1/(1+(1/Math.exp(dot(temp, synaptic_weights)))));
+
+//        for(double[] items : synaptic_weights) {
+//            for (double item : items) {
+//                System.out.println(item);
+//            }
+//        }
+//
+//        System.out.println("\n" + output);
     }
 
     public static double dot(double[][] matrix1, double[][] matrix2){
         double sum = 0;
         for(int a = 0; a<matrix1.length; a++){
-            for(int b = 0; b<matrix1[0].length; b++){
+            for(int b = 0; b<matrix2[0].length; b++){
                 sum += matrix1[a][b] * matrix2[a][b];
             }
         }
