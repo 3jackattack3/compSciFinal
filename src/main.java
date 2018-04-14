@@ -9,17 +9,23 @@ import java.util.Random;
 
 public class main {
     public static void main(String args[]) {
-        double[][] training_set_inputs = {{0,0,1}, {1,1,1}, {1,0,1}, {0,1,1}};
-        double[][] training_set_outputs = {{0},{1},{1},{0}};
+//        double[][] training_set_inputs = {{0,0,1}, {1,1,1}, {1,0,1}, {0,1,1}};
+//        double[][] training_set_outputs = {{0},{1},{1},{0}};
         Random rand = new Random(1);
         double[][] synaptic_weights ={{(2* rand.nextInt(2)), (2* rand.nextInt(2)), (2* rand.nextInt(2))}, {0}};
-        double output = 0;
-        for(int i = 0; i<10000; i++){
-            output = 1/(1+Math.exp(-1*(dot(training_set_inputs, synaptic_weights))));
-            synaptic_weights = add(synaptic_weights,dot(transpose(training_set_inputs), multiply(multiply(subtract(training_set_outputs,output), output), (1-output))));
+//        double output = 0;
+//        for(int i = 0; i<10000; i++){
+//            output = 1/(1+Math.exp(-1*(dot(training_set_inputs, synaptic_weights))));
+//            synaptic_weights = add(synaptic_weights,dot(transpose(training_set_inputs), multiply(multiply(subtract(training_set_outputs,output), output), (1-output))));
+//        }
+//        double[][] temp = {{1},{0},{0}};
+//        System.out.print(1/(1+(1/Math.exp(dot(temp, synaptic_weights)))));
+
+        for(double[] items : synaptic_weights) {
+            for (double item : items) {
+                System.out.println(item);
+            }
         }
-        double[][] temp = {{1},{0},{0}};
-        System.out.print(1/(1+(1/Math.exp(dot(temp, synaptic_weights)))));
     }
 
     public static double dot(double[][] matrix1, double[][] matrix2){
