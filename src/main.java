@@ -20,6 +20,14 @@ public class main {
             }
         }
 
+        System.out.println("\nthe training_set_inputs = ");
+        for(double[] column : training_set_inputs){
+            for(double item : column){
+                System.out.print(item + ", ");
+            }
+            System.out.println();
+        }
+
         neuron.train(training_set_inputs, training_set_outputs, 10000);
 
         System.out.println("new weights after training: ");
