@@ -9,6 +9,30 @@ import java.util.Random;
 
 public class main {
     public static void main(String args[]) {
+//        Neuron neuron = new Neuron();
+//
+//        double[][] matrix1 = {{1, 3}, {2, 4}};
+//        double[][] matrix2 = {{2, 1}, {0, 2}};
+//
+//        for(double[] column : matrix1){
+//            for(double item : column){
+//                System.out.print(item + ", ");
+//            }
+//            System.out.println();
+//        }
+//
+//        System.out.println();
+//        double[][] matrixAnswer;
+//
+//         matrixAnswer = (neuron.transpose(matrix1));
+//
+//        for(double[] column : matrixAnswer){
+//            for(double item : column){
+//                System.out.print(item + ", ");
+//            }
+//            System.out.println();
+//        }
+
         double[][] training_set_inputs = {{0,0,1}, {1,1,1}, {1,0,1}, {0,1,1}};
         double[][] training_set_outputs = {{0},{1},{1},{0}};
 
@@ -28,19 +52,23 @@ public class main {
             System.out.println();
         }
 
-        neuron.train(training_set_inputs, training_set_outputs, 10000);
+        double[][] answerMatrix;
 
-        System.out.println("new weights after training: ");
-        for(double[] column : neuron.synapticWeights){
-            for(double item : column){
-                System.out.print(item + ", ");
-            }
-        }
+//        answerMatrix = neuron.matrixMultiply(neuron.synapticWeights, training_set_inputs);
 
-        double[][] temp = {{1},{0},{0}};
+        neuron.train(training_set_inputs, training_set_outputs, 1);
 
-        System.out.println("considering a new situation [1,0,0] -> ?: ");
-        System.out.print(neuron.think(temp));
+//        System.out.println("new weights after training: ");
+//        for(double[] column : neuron.synapticWeights){
+//            for(double item : column){
+//                System.out.print(item + ", ");
+//            }
+//        }
+//
+//        double[][] temp = {{1},{0},{0}};
+//
+//        System.out.println("considering a new situation [1,0,0] -> ?: ");
+//        System.out.print(neuron.think(temp));
 
 //        Random rand = new Random(1);
 //        double[][] synaptic_weights = {{(2* rand.nextInt(2))}, {(2* rand.nextInt(2))}, {(2* rand.nextInt(2))}, {(2* rand.nextInt(2))}}; //{{1}, {1}, {1}, {1}};
