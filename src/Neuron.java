@@ -43,7 +43,7 @@ public class Neuron {
             for(int i = 0; i<numberOfTrainingIterations; i++){
                 output = this.think(trainingSetInputs);
                 error = this.subtract(trainingSetOutputs, output);
-                this.adjustment = this.matrixMultiply(this.transpose(trainingSetInputs), this.multiply(error, this.sigmoidDerivative(this.output)));
+                this.adjustment = this.matrixMultiply(this.multiply(error, this.sigmoidDerivative(this.output)), this.transpose(trainingSetInputs));
                 this.synapticWeights = this.matrixAdd(this.synapticWeights, this.adjustment);
             }
         }
@@ -62,7 +62,7 @@ public class Neuron {
             double[][] answer = new double[matrix[0].length][matrix.length];
             for(int i = 0; i < matrix.length; i++) {
                 for(int j = 0; j < matrix[0].length; j++) {
-                    answer[i][j] = matrix[j][i];
+                    answer[j][i] = matrix[i][j];
                 }
             }
 

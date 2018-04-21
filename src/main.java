@@ -52,23 +52,30 @@ public class main {
             System.out.println();
         }
 
-        double[][] answerMatrix;
-
-//        answerMatrix = neuron.matrixMultiply(neuron.synapticWeights, training_set_inputs);
-
-        neuron.train(training_set_inputs, training_set_outputs, 1);
-
-//        System.out.println("new weights after training: ");
-//        for(double[] column : neuron.synapticWeights){
+//        double[][] answerMatrix;
+//
+//        answerMatrix = neuron.transpose(training_set_inputs);
+//
+//        for(double[] column : answerMatrix){
 //            for(double item : column){
 //                System.out.print(item + ", ");
 //            }
+//            System.out.println();
 //        }
-//
-//        double[][] temp = {{1},{0},{0}};
-//
-//        System.out.println("considering a new situation [1,0,0] -> ?: ");
-//        System.out.print(neuron.think(temp));
+
+        neuron.train(training_set_inputs, training_set_outputs, 10000);
+
+        System.out.println("new weights after training: ");
+        for(double[] column : neuron.synapticWeights){
+            for(double item : column){
+                System.out.print(item + ", ");
+            }
+        }
+
+        double[][] temp = {{1},{0},{0}};
+
+        System.out.println("considering a new situation [1,0,0] -> ?: ");
+        System.out.print(neuron.think(temp));
 
 //        Random rand = new Random(1);
 //        double[][] synaptic_weights = {{(2* rand.nextInt(2))}, {(2* rand.nextInt(2))}, {(2* rand.nextInt(2))}, {(2* rand.nextInt(2))}}; //{{1}, {1}, {1}, {1}};
