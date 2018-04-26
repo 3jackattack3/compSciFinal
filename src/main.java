@@ -52,6 +52,14 @@ public class main {
             System.out.println();
         }
 
+        System.out.println("\nthe training_set_outputs = ");
+        for(double[] column : training_set_outputs){
+            for(double item : column){
+                System.out.print(item + ", ");
+            }
+            System.out.println();
+        }
+
 //        double[][] answerMatrix;
 //
 //        answerMatrix = neuron.transpose(training_set_inputs);
@@ -74,8 +82,8 @@ public class main {
 
         double[][] temp = {{1},{0},{0}};
 
-        System.out.println("considering a new situation [1,0,0] -> ?: ");
-        System.out.print(neuron.think(temp));
+        System.out.println("\nconsidering a new situation [1,0,0] -> ?: ");
+        System.out.print(neuron.think(temp));//neuron.sigmoid(neuron.matrixSum(neuron.matrixMultiply(temp, neuron.synapticWeights))));
 
 //        Random rand = new Random(1);
 //        double[][] synaptic_weights = {{(2* rand.nextInt(2))}, {(2* rand.nextInt(2))}, {(2* rand.nextInt(2))}, {(2* rand.nextInt(2))}}; //{{1}, {1}, {1}, {1}};

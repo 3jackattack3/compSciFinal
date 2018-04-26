@@ -20,23 +20,33 @@ public class Neuron {
             this.rand = new Random(1);
             this.synapticWeights = new double[1][3];
             for(int i = 0; i<3; i++) {
-                synapticWeights[0][i] = (rand.nextDouble());
+                synapticWeights[0][i] = 1;//(rand.nextDouble());  //COMMENTED OUT FOR TESTING, UNCOMMENT LATER
             }
-//            this.synapticWeights = this.add(synapticWeights, 1);
-//            this.synapticWeights = this.multiply(synapticWeights, 2);
-//            this.synapticWeights = this.subtract(synapticWeights, 1);
+            this.synapticWeights = this.multiply(synapticWeights, 2);
+            this.synapticWeights = this.subtract(synapticWeights, 1);
         }
 
-        private double sigmoid(double x){
+        public double sigmoid(double x){
             return (1/(1+Math.exp(-x)));
         }
 
-        private double sigmoidDerivative(double x){
+        public double[][] sigmoidMatrix(double[][] matrix){
+            double[][] answerMatrix = new double[matrix.length][1];
+
+            for(int i = 0; i < matrix.length; i++) {
+                for(int j = 0; j < matrix[0].length; j++) {
+                    answerMatrix[i][j] = sigmoid(matrix[i][j]);
+                }
+            }
+            return answerMatrix;
+        }
+
+        public double sigmoidDerivative(double x){
             return (x*(1-x));
         }
 
         public double think(double[][] inputs){
-            return this.sigmoid(this.matrixSum(this.matrixMultiply(this.synapticWeights, inputs)));
+            return this.sigmoid(this.matrixSum(this.matrixMultiply(inputs, this.synapticWeights)));  //this.sigmoid.this.matrixsum.....
         }
 
         public void train(double[][] trainingSetInputs, double[][] trainingSetOutputs, int numberOfTrainingIterations){
@@ -70,6 +80,10 @@ public class Neuron {
         }
 
         public static double[][] matrixMultiply(double[][] matrix1, double[][] matrix2){
+            if(matrix1.length != matrix2[0].length && matrix1[0].length == matrix2.length){
+                matrixMultiply(matrix2, matrix1);
+            }
+
             double[][] answer = new double[matrix1[0].length][matrix2.length];
             double sum = 0;
 
@@ -87,7 +101,7 @@ public class Neuron {
 
         }
 
-        private static double matrixSum(double[][] matrix){
+        public static double matrixSum(double[][] matrix){
                 double sum = 0;
 
                 for(double[] col : matrix){
